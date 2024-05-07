@@ -11,7 +11,7 @@ connection = mysql.connector.connect(
 
 # Creating a cursor object
 cursor = connection.cursor()
-db = 'TestWeather'
+db = 'Weather'
 
 # SQL query to delete all rows from a table
 delete_all_query = """
