@@ -1,0 +1,2 @@
+08:50 Ti-Ta the filename indicates the date and time: MPL_5038_yyyymmddHHMM.nc
+08:50 Ti-Ta HHMM is in UTC

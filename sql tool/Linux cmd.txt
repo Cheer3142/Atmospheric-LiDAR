@@ -1,0 +1,244 @@
+ssh root@192.168.2.190
+password: P@ssALiN01
+
+1890 - Docker SQL
+   	user="root",
+    	password="Cheer123"
+1885 - Docker Mongo
+	id: toon
+	password: toon
+	id: root
+	password: 4321
+3000 - Cheer Garfana
+	id: admin
+	password: Cheer123
+
+# -------------------------- Public Dashboards ------------------------
+http://192.168.2.190:3000/public-dashboards/247bf14379cb4289b095fb7f8bbf979b?orgId=1
+
+
+
+sudo lsof -iTCP -sTCP:LISTEN | grep mongo
+docker ps #### --------------------- check service
+
+
+#---------------------- Docker 1 -----------------------
+Mongo
+docker pull mongo
+docker run --name AutoTest -d -p 1885:1885 mongo
+
+docker stop AutoTest
+docker rm AutoTest
+
+#---------------------- Compose Docker 1 -----------------------
+nano app.py
+>>>
+import time
+
+import redis
+from flask import Flask
+
+app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
+
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr('hits')
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
+
+@app.route('/')
+def hello():
+    count = get_hit_count()
+    return 'Hello World! I have been seen {} times.\n'.format(count)
+>>>
+
+nano requirements.txt
+>>>
+flask
+redis
+>>>
+
+Dockerfile
+>>>
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run", "--debug"]
+>>>
+
+compose.yaml
+>>>
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
+>>>
+
+docker compose up
+
+
+
+# -------------------------- Compose Docker 2 ------------------------
+https://www.youtube.com/watch?v=rPi9yPtlHYw
+
+cd kod/composereal
+nano docker-compose.yml
+>>>
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 4321
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 1885:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 4321
+      ME_CONFIG_MONGODB_URL: mongodb://root:4321@mongo:27017/
+      ME_CONFIG_BASICAUTH: true
+      ME_CONFIG_BASICAUTH_USERNAME: $ME_WEB_USERNAME
+      ME_CONFIG_BASICAUTH_PASSWORD: $ME_WEB_PASSWORD
+>>>
+
+
+sudo apt install docker-compose
+docker-compose up -d
+docker compose up -d
+docker-compose logs -tail 100 -f
+
+docker stop composereal_mongo_1
+docker stop composereal_mongo-express_1
+docker logs composereal_mongo-express_1
+
+
+pass admin/pass
+
+docker exec -it b56cbe69bb4a_composereal-mongo-express-1 bash
+mongosh
+use admin
+db.createUser({
+    user: "toon",
+    pwd: "toon",
+    roles: [{ role: "root", db: "admin" }]
+})
+
+
+db.createUser(
+   {
+     user: "User",
+     pwd: "4321",
+     roles: [ 
+       { role: "userAdminAnyDatabase", db: "admin" },
+       { role: "readWriteAnyDatabase", db: "admin" } 
+     ]
+   }
+ )
+
+# -------------------------- Install grafana ------------------------
+Install grafana
+find / -name grafana-server
+
+sudo apt-get install -y apt-transport-https software-properties-common wget
+Import the GPG key:
+
+sudo mkdir -p /etc/apt/keyrings/
+wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+To add a repository for stable releases, run the following command:
+
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+To add a repository for beta releases, run the following command:
+
+echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com beta main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+Run the following command to update the list of available packages:
+
+# Updates the list of available packages
+sudo apt-get update
+To install Grafana OSS, run the following command:
+
+# Installs the latest OSS release:
+sudo apt-get install grafana
+
+systemctl daemon-reload
+systemctl enable grafana-server
+systemctl status grafana-server
+systemctl start grafana-server
+systemctl restart grafana-server
+systemctl stop grafana-server
+
+# -------------------------- Clone Docker ------------------------
+
+git clone https://github.com/ajeje93/grafana-mongodb-docker
+http://192.168.2.190:3041/
+admin
+Cheer123
+
+npm install
+npm run server
+
+
+
+# -------------------------- Install SQL ------------------------
+docker run --name MySQLDB -p 1890:3306 -e MYSQL_ROOT_PASSWORD=Cheer123 -d mysql
+create database myDB;
+pip install mysql-connector-python
+download mysql workbench 
+
+# -------------------------- Download Picture ------------------------
+curl https://www.narit.or.th/images/00_logos/NARIT_logo/NARIT/Logo_NARIT_01.jpg -o NARIT_logo.jpg
+curl -O https://www.narit.or.th/images/00_logos/NARIT_logo/NARIT/Logo_NARIT_01.jpg
+https://www.narit.or.th/images/00_logos/NARIT_logo/NARIT/Logo_NARIT_01.jpg
+
+
+# -------------------------- Download Base64 ------------------------
+SELECT TO_BASE64(image_data)
+FROM Cheer.Images
+WHERE id = 1;
+https://images.app.goo.gl/pM9JfGvWiMhBwiZr5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Terminator
+cat /dev/null > ~/.bash_history && history -c && exit
+This clears the history saved in the history file as well as the history in the current session (so that it's not saved to file when bash exits). It then exits the shell. The next shell session will have no history.
+
+
