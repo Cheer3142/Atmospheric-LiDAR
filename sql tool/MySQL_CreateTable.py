@@ -14,6 +14,19 @@ cursor = connection.cursor()
 
 # SQL query to create a table
 create_table_query = """
+CREATE TABLE IF NOT EXISTS Weather (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Temp FLOAT,
+    Windspeed FLOAT,
+    Humid FLOAT,
+    Dewpoint FLOAT,
+    AirPressure FLOAT,
+    DateTime DATETIME
+)
+"""
+
+'''
+create_table_query = """
 CREATE TABLE IF NOT EXISTS ALiN (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Digital_Count FLOAT,
@@ -33,6 +46,7 @@ CREATE TABLE Images (
     uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """
+'''
 
 # Executing the SQL query
 cursor.execute(create_table_query)
