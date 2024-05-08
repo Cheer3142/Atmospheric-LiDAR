@@ -65,7 +65,7 @@ if __name__ == '__main__':
     df['date'] = df['date'] + timedelta(hours = 7)
     print(df.head())
 
-    
+    '''
     # SQL query to insert data
     table = 'Weather'
     con, cur = Connect()
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     InsertMany(table, data_to_insert, cur)
     Commit(con, cur)
     
-
+    '''
 
 
 
