@@ -27,3 +27,9 @@ git clone https://github.com/Cheer3142/Atmos-LiDAR.git
 ```bash
 cd Atmos-LiDAR
 ```
+
+## Acknowledgments
+This project was developed as part of the Atmospheric Lidar of NARIT (ALiN) team's initiatives.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
