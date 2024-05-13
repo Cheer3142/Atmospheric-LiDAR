@@ -17,9 +17,13 @@ By simplifying and streamlining the data processing workflow, Atmos-LiDAR can he
 
 ## Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/Cheer3142/Atmos-LiDAR.git
+#### Clone the repository
 
-# Move to the project directory
+```bash
+git clone https://github.com/Cheer3142/Atmos-LiDAR.git
+```
+
+#### Move to the project directory
+```bash
 cd Atmos-LiDAR
+```
