@@ -1,0 +1,1173 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 7,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "New link",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "liveNow": true,
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 4,
+        "w": 22,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "autoPlay": true,
+        "buttons": [],
+        "controls": true,
+        "height": 0,
+        "heightMode": "original",
+        "infinityPlay": false,
+        "name": "TO_BASE64(image_data)",
+        "noResultsMessage": "Nothing to display...",
+        "scale": "auto",
+        "toolbar": true,
+        "width": 1280,
+        "widthMode": "custom",
+        "zoomType": "default"
+      },
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_BASE64(image_data)\r\nFROM Cheer.Images\r\nWHERE id = 5;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "Images"
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-image-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 7,
+        "x": 0,
+        "y": 4
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Atmospheric Lidar of NARIT (ALiN) \n<br />\n\n## Instrumentation:\n- **Lidar Type:** PMT (Photomultiplier Tube)\n- **Wavelength:** 532 nm (Mie scattering)\n\n## Parameters:\n- **Range Resolution:** [Specify resolution]\n- **Temporal Resolution:** [Specify resolution]\n- **Vertical Range:** [Specify range]\n\n## Observations:\n- **Date:** [Date of observation]\n- **Location:** [Observation location]\n- **Atmospheric Conditions:** [Brief description of conditions]\n\n## Data Analysis:\n- **Raw Data:** [Provide link or description]\n- **Processed Data:** [Provide link or description]\n- **Analysis Techniques:** [Describe the methods used for data analysis]\n\n## Results:\n- [Summary of significant findings]\n- [Graphs or visualizations if available]\n\n## Conclusion:\n- [Interpretation of results]\n- [Implications or further research directions]\n\n\n<br /><br />\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "axisSoftMax": 5250,
+            "axisSoftMin": -250,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": {
+              "fixed": 5
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "show": "lines"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALIN_Distance"
+            },
+            "properties": [
+              {
+                "id": "custom.axisLabel",
+                "value": "Distance [m]"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALIN_Digital_Count"
+            },
+            "properties": [
+              {
+                "id": "custom.axisLabel",
+                "value": "Digitizer Counts (Normalized)"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 7,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "StdDev",
+          "sortDesc": true
+        },
+        "series": [
+          {
+            "name": "ALiN",
+            "pointColor": {
+              "fixed": "red"
+            },
+            "pointSize": {
+              "fixed": 2,
+              "max": 100,
+              "min": 1
+            },
+            "x": "ALIN_Digital_Count",
+            "y": "ALIN_Distance"
+          },
+          {
+            "name": "MPL",
+            "pointColor": {
+              "fixed": "blue"
+            },
+            "x": "MPL_Digital_Count",
+            "y": "MPL_Distance"
+          }
+        ],
+        "seriesMapping": "manual",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT\r\n  Distance AS ALIN_Distance, \r\n  Digital_Count / max_dc AS ALIN_Digital_Count \r\nFROM  \r\n  Cheer.ALiN,\r\n  (SELECT max(Digital_Count) as max_dc FROM Cheer.ALiN WHERE DateTime = (SELECT max(DateTime) FROM Cheer.ALiN)) as max_count\r\nWHERE \r\n  -- DateTime IN (SELECT max(DateTime) FROM Cheer.ALiN) AND\r\n  -- DateTime BETWEEN $__timeFrom() AND $__timeTo() AND\r\n  -- Distance BETWEEN 0 AND 5000 AND \r\n  Digital_Count > 0 AND \r\n  DateTime = (SELECT max(DateTime) FROM Cheer.ALiN WHERE DateTime BETWEEN $__timeFrom() AND $__timeTo());",
+          "refId": "ALiN",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "Distance",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "Digital_Count",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "ALiN"
+        },
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT\r\n  Distance AS MPL_Distance, \r\n  Digital_Count/max_dc AS MPL_Digital_Count \r\nFROM \r\n  Cheer.MPL,\r\n  (SELECT max(Digital_Count) as max_dc FROM Cheer.MPL WHERE DateTime = (SELECT max(DateTime) FROM Cheer.MPL)) as max_count\r\nWHERE \r\n  -- DateTime IN (SELECT max(DateTime) FROM Cheer.MPL)\r\n  -- DateTime BETWEEN $__timeFrom() AND $__timeTo() AND\r\n  Distance BETWEEN 0 AND 6000 AND \r\n  DateTime = (SELECT max(DateTime) FROM Cheer.MPL WHERE DateTime BETWEEN $__timeFrom() AND $__timeTo());",
+          "refId": "MPL",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "Digital_Count",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "Distance",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "orderBy": {
+              "property": {
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "whereJsonTree": {
+              "children1": [
+                {
+                  "id": "bb9a889b-cdef-4012-b456-718efbde67c5",
+                  "properties": {
+                    "field": "Time",
+                    "fieldSrc": "field",
+                    "operator": "equal",
+                    "value": [
+                      null
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "time"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              ],
+              "id": "88b9b8a8-0123-4456-b89a-b18efbcb6933",
+              "type": "group"
+            }
+          },
+          "table": "MPL"
+        }
+      ],
+      "title": "Latest Dataset Comparison",
+      "type": "xychart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 19,
+        "y": 4
+      },
+      "id": 17,
+      "options": {
+        "buttonTextOption": "button_text",
+        "displayButtonsHorizontal": false,
+        "displayStyle": "dropdown",
+        "primaryFieldOption": "primary",
+        "primaryFieldValueOption": "1",
+        "timeFromOption": "time_from",
+        "timeToOption": "time_to"
+      },
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n\t1703955600 as 'time_from',\r\n\t'At The Present' as ' button_text'\r\n\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "DateTime",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "ALiN"
+        },
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT\r\n\tDATE_SUB(DateTime, INTERVAL 5 MINUTE) as 'time_from',\r\n  DateTime as 'time_to',\r\n\t1 as 'primary',\r\n\t-- DATE_FORMAT(DATE_SUB(DateTime, INTERVAL 24 HOUR), '%Y-%m-%d %H:%i:%s') as 'button_text'\r\n\tDATE_FORMAT(DateTime, '%d %b %Y %H:%i') as 'button_text'\r\nFROM \r\n\tCheer.ALiN\r\nORDER BY \r\n\tDateTime DESC;",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Time Selector",
+      "type": "williamvenner-timepickerbuttons-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 19,
+        "y": 7
+      },
+      "id": 18,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": false
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select DATE_FORMAT($__timeTo(), '%d %b %Y %H:%i')  as 'Current Time'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Selected Time",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 4,
+        "x": 19,
+        "y": 10
+      },
+      "id": 11,
+      "options": {
+        "feedUrl": "https://tmd-dev.azurewebsites.net/api/xml/weather-report?stationnumber=48327",
+        "showImage": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Chiang Mai Weather Report",
+      "type": "news"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 30
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#e030ff",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Temperature (°C)"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 25
+                    },
+                    {
+                      "color": "light-red",
+                      "value": 33
+                    },
+                    {
+                      "color": "dark-red",
+                      "value": 40
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "min",
+                "value": 10
+              },
+              {
+                "id": "max",
+                "value": 50
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Dewpoint (°C)"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "orange",
+                      "value": 18
+                    },
+                    {
+                      "color": "light-red",
+                      "value": 22
+                    },
+                    {
+                      "color": "semi-dark-red",
+                      "value": 25
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "min",
+                "value": 10
+              },
+              {
+                "id": "max",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Humidity (%)"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "super-light-blue",
+                      "value": 40
+                    },
+                    {
+                      "color": "light-blue",
+                      "value": 60
+                    },
+                    {
+                      "color": "dark-blue",
+                      "value": 70
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "min",
+                "value": 20
+              },
+              {
+                "id": "max",
+                "value": 80
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Air Pressure (mbar)"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-blue",
+                      "value": null
+                    },
+                    {
+                      "color": "super-light-blue",
+                      "value": 1008
+                    },
+                    {
+                      "color": "light-red",
+                      "value": 1015
+                    },
+                    {
+                      "color": "dark-red",
+                      "value": 1022
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "min",
+                "value": 1000
+              },
+              {
+                "id": "max",
+                "value": 1030
+              },
+              {
+                "id": "decimals"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Windspeed (m/s)"
+            },
+            "properties": [
+              {
+                "id": "min",
+                "value": -1
+              },
+              {
+                "id": "max",
+                "value": 9
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "super-light-blue",
+                      "value": null
+                    },
+                    {
+                      "color": "light-blue",
+                      "value": 1
+                    },
+                    {
+                      "color": "semi-dark-green",
+                      "value": 3.2
+                    },
+                    {
+                      "color": "semi-dark-red",
+                      "value": 5.5
+                    },
+                    {
+                      "color": "dark-purple",
+                      "value": 7.5
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 7,
+        "y": 17
+      },
+      "id": 16,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "firstNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  Temp as 'Temperature (°C)', \r\n  Dewpoint as 'Dewpoint (°C)', \r\n  \r\n  Humid as 'Humidity (%)',\r\n  AirPressure as 'Air Pressure (mbar)',\r\n  Windspeed as 'Windspeed (m/s)',\r\n  DateTime\r\nFROM Cheer.Weather \r\nORDER BY DateTime DESC\r\nLIMIT 2",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "Distance",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "Digital_Count",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "MPL"
+        }
+      ],
+      "title": "Weather Station API ",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 18,
+        "w": 7,
+        "x": 0,
+        "y": 18
+      },
+      "id": 8,
+      "options": {
+        "autoPlay": true,
+        "buttons": [
+          "navigation",
+          "download"
+        ],
+        "controls": true,
+        "height": 0,
+        "heightMode": "auto",
+        "infinityPlay": false,
+        "name": "TO_BASE64(image_data)",
+        "noResultsMessage": "Nothing to display...",
+        "scale": "crisp-edges",
+        "title": "NEWS Link",
+        "toolbar": true,
+        "url": "https://www.facebook.com/3mitinews/videos/1196905155016377/",
+        "width": 0,
+        "widthMode": "auto",
+        "zoomType": "panpinch"
+      },
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_BASE64(image_data), filename\r\nFROM Cheer.Images\r\nWHERE \r\nfilename = 'Mid-1.jpg'  OR \r\nfilename = 'event1.jpg'  OR \r\nfilename = 'event2.jpg'  OR \r\nfilename = 'event3.jpg'  OR \r\nfilename = 'event4.jpg'  OR \r\nfilename = 'event5.jpg'  OR \r\nfilename = 'event6.jpg'  OR \r\nfilename = 'Epic.jpg'\r\n\r\nORDER BY id\r\nDESC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "Images"
+        }
+      ],
+      "type": "volkovlabs-image-panel"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 12,
+        "x": 7,
+        "y": 22
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Atmospheric Lidar Information\n<br />\n\n## Overview\nAtmospheric lidar, short for Light Detection and Ranging, is a remote sensing technique used to measure properties of the Earth's atmosphere. It involves sending laser pulses into the atmosphere and analyzing the backscattered light to determine various atmospheric parameters.\n\n## Types of Lidar\n1. **DIAL (Differential Absorption Lidar):** Measures concentrations of trace gases such as ozone, water vapor, and pollutants.\n2. **Rayleigh Lidar:** Utilizes scattering from air molecules to measure atmospheric temperature and density.\n3. **Mie Lidar:** Specifically targets aerosol particles, providing information on their distribution, composition, and optical properties.\n\n## Components of a Mie Lidar System\n- **Laser Source:** Emits laser pulses typically in the visible range.\n- **Telescope:** Collects the backscattered light.\n- **Optical Filters:** Selects the wavelength of interest for detection.\n- **Photodetector:** Converts optical signals into electrical signals for analysis.\n- **Data Processing Unit:** Analyzes the received signals to retrieve aerosol properties.\n\n## Applications\n- **Air Quality Monitoring:** Mie lidar can detect and quantify airborne particulate matter, aiding in air quality assessments.\n- **Climate Research:** Provides insights into the distribution and behavior of aerosols in the atmosphere, contributing to climate modeling efforts.\n- **Volcanic Ash Detection:** Can detect and track volcanic ash clouds, assisting in aviation safety.\n- **Meteorological Studies:** Helps in understanding atmospheric dynamics and processes such as boundary layer mixing and cloud formation.\n\n## Challenges\n- **Signal Attenuation:** Atmospheric attenuation reduces the strength of the lidar signal, limiting detection range and accuracy.\n- **Calibration:** Maintaining accurate calibration is crucial for reliable measurements.\n- **Data Interpretation:** Extracting meaningful information from lidar returns requires sophisticated data analysis techniques.\n\n## Conclusion\nMie lidar plays a crucial role in atmospheric research, providing valuable data on aerosol properties and atmospheric composition. Its versatility makes it a valuable tool for various scientific and environmental applications.\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "What is Atmospheric Lidar?",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "adjan2to9fny8e"
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 4,
+        "x": 19,
+        "y": 22
+      },
+      "id": 12,
+      "options": {
+        "feedUrl": "https://tmd-dev.azurewebsites.net/api/xml/region-daily-forecast?regionid=1",
+        "showImage": true
+      },
+      "title": "Northern Weather Forecast",
+      "type": "news"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 0,
+        "y": 36
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Team Member:\n  **Name:** Titaporn Supasri\n  - **Role:** Principal Investigator\n  - **Contact:** titaporn@narit.or.th\n\n  **Name:** Supachai Awiphan\n  - **Role:** Co-Principal Investigator\n  - **Contact:** supachai@narit.or.th\n\n  **Name:** Chammari Pothipor\n  - **Role:** Researcher\n  - **Contact:** chammari@narit.or.th\n\n  **Name:** Tawanpon Kaima\n  - **Role:** Mechanical engineer\n  - **Contact:** tawanpon@narit.or.th\n\n  **Name:** Wittaya Kumtan\n  - **Role:** Software engineer\n  - **Contact:** wittaya@narit.or.th\n\n  **Name:** Patcharadanai Sombatsatien\n  - **Role:** Software engineer\n  - **Contact:** patcharadanai@narit.or.th\n\n  **Name:** Asst. Prof. Dr. Chalongrat Daengngam\n  - **Role:** Opical advisor\n  - **Contact:** chalongrat.d@psu.ac.th\n\n  **Name:** Sukrit Thongrom\n  - **Role:** Optical consultant\n  - **Contact:** sukrit@narit.or.th\n  \n **Name:** Thansita Thomrungpiyathan\n  - **Role:** Mechanical consultant\n  - **Contact:** thansita@narit.or.th\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "",
+          "refId": "A"
+        }
+      ],
+      "title": "ALiN member",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "edjb07gpizp4we"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 23,
+        "x": 0,
+        "y": 48
+      },
+      "id": 15,
+      "options": {
+        "autoPlay": true,
+        "buttons": [],
+        "controls": true,
+        "height": 0,
+        "heightMode": "original",
+        "infinityPlay": false,
+        "name": "TO_BASE64(image_data)",
+        "noResultsMessage": "Nothing to display...",
+        "scale": "auto",
+        "toolbar": true,
+        "width": 1280,
+        "widthMode": "auto",
+        "zoomType": "default"
+      },
+      "targets": [
+        {
+          "dataset": "Cheer",
+          "datasource": {
+            "type": "mysql",
+            "uid": "edjb07gpizp4we"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_BASE64(image_data)\r\nFROM Cheer.Images\r\nWHERE id = 8;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "Images"
+        }
+      ],
+      "transparent": true,
+      "type": "volkovlabs-image-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6M",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "",
+  "title": "Main Test v.2",
+  "uid": "bdjb16s6kcef4faa",
+  "version": 98,
+  "weekStart": ""
+}

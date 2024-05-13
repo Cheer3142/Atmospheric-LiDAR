@@ -84,7 +84,7 @@ if __name__ == '__main__':
     d[3] = int(d[3])
     InsertOne(table, tuple(d), cur)
     Commit(con, cur)
-    exit()
+    
 
 
 

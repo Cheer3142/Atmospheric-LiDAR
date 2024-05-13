@@ -40,4 +40,4 @@ def upload_image(image_path):
             print("MySQL connection is closed.")
 
 # Usage example:
-upload_image("Sky1.jpg")
+upload_image("event1.jpg")
