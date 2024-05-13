@@ -20,7 +20,7 @@ By simplifying and streamlining the data processing workflow, Atmos-LiDAR can he
 #### Clone the repository
 
 ```bash
-https://github.com/Cheer3142/Atmospheric-LiDAR
+git clone https://github.com/Cheer3142/Atmospheric-LiDAR
 ```
 
 #### Move to the project directory
