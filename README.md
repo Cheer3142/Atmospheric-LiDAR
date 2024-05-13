@@ -25,7 +25,7 @@ git clone https://github.com/Cheer3142/Atmospheric-LiDAR
 
 #### Move to the project directory
 ```bash
-cd Atmos-LiDAR
+cd Atmospheric-LiDAR
 ```
 
 ## Acknowledgments
