@@ -83,8 +83,8 @@ def delay10min(t):
     ALiN Function
 '''
 #-------------------------------------------------------------------------------
-nowtime         = "202404031930" # delay10min(datetime.now())
-utctime         = "202404031230" # delay10min(datetime.utcnow())
+nowtime         = "202405141930" # delay10min(datetime.now())
+utctime         = "202405101230" # delay10min(datetime.utcnow())
 
 with open("pathcfg.json", "r") as openfile:
     path_json = json.load(openfile)
@@ -100,29 +100,30 @@ OC_path     = path                              # Kill this Line
     ALiN Function
 '''
 #-------------------------------------------------------------------------------
-alin                    = ALiNPro(MPL_path = MPL_path,
-                          timenow = utctime,
-                          timethai = nowtime)      
+alin                                = ALiNPro(MPL_path = MPL_path,
+                                      timenow = utctime,
+                                      timethai = nowtime)      
 alin.OCread(OC_path)                # path
-MongoJson, ALiN_SQL, MPL_SQL       = alin.calpack()
+MongoJson, ALiN_SQL, MPL_SQL        = alin.calpack()
 
 '''
     SQL Insert
 '''
 #-------------------------------------------------------------------------------
+'''
 con, cur = ALiNupdateSQL.Connect()
 ALiNupdateSQL.InsertMany('ALiN', ALiN_SQL, cur)
 ALiNupdateSQL.InsertMany('MPL', MPL_SQL, cur)
 ALiNupdateSQL.Commit(con, cur)
-
+'''
 
 '''
     Mongo Insert
 '''
 #-------------------------------------------------------------------------------
 MongoInsert.insert_file(
-    db_name     = 'ALiN_Cheer',
-    col_name    = 'ALiN_Cheer{}'.format(nowtime),
+    db_name     = 'ALiN',
+    col_name    = 'ALiN_{}'.format(nowtime),
     json_file   = MongoJson)
 #-------------------------------------------------------------------------------
 
