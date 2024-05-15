@@ -84,7 +84,7 @@ def delay10min(t):
 '''
 #-------------------------------------------------------------------------------
 nowtime         = "202405141930" # delay10min(datetime.now())
-utctime         = "202405101230" # delay10min(datetime.utcnow())
+utctime         = "202405141230" # delay10min(datetime.utcnow())
 
 with open("pathcfg.json", "r") as openfile:
     path_json = json.load(openfile)
