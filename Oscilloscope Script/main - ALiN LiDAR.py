@@ -110,21 +110,23 @@ MongoJson, ALiN_SQL, MPL_SQL        = alin.calpack()
     SQL Insert
 '''
 #-------------------------------------------------------------------------------
-'''
+
 con, cur = ALiNupdateSQL.Connect()
 ALiNupdateSQL.InsertMany('ALiN', ALiN_SQL, cur)
 ALiNupdateSQL.InsertMany('MPL', MPL_SQL, cur)
 ALiNupdateSQL.Commit(con, cur)
-'''
+
 
 '''
     Mongo Insert
 '''
 #-------------------------------------------------------------------------------
+'''
 MongoInsert.insert_file(
     db_name     = 'ALiN',
     col_name    = 'ALiN_{}'.format(nowtime),
     json_file   = MongoJson)
+'''
 #-------------------------------------------------------------------------------
 
 

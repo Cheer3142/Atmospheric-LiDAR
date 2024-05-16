@@ -81,7 +81,10 @@ if __name__ == '__main__':
     #data_to_insert = df.values.tolist()
     #InsertMany(table, data_to_insert, cur)
     d = df.iloc[0].values.tolist()
-    d[3] = int(d[3])
+    
+    for i in range(1, len(d), 1):
+        d[i] = float(d[i])
+    
     InsertOne(table, tuple(d), cur)
     Commit(con, cur)
     
