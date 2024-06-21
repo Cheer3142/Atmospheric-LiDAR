@@ -83,8 +83,8 @@ def delay10min(t):
     ALiN Function
 '''
 #-------------------------------------------------------------------------------
-nowtime         = "202405141930" # delay10min(datetime.now())
-utctime         = "202405141230" # delay10min(datetime.utcnow())
+nowtime         = "202406202040" # delay10min(datetime.now())
+utctime         = "202406201340" # delay10min(datetime.utcnow())
 
 with open("pathcfg.json", "r") as openfile:
     path_json = json.load(openfile)
@@ -121,12 +121,11 @@ ALiNupdateSQL.Commit(con, cur)
     Mongo Insert
 '''
 #-------------------------------------------------------------------------------
-'''
 MongoInsert.insert_file(
     db_name     = 'ALiN',
     col_name    = 'ALiN_{}'.format(nowtime),
     json_file   = MongoJson)
-'''
+
 #-------------------------------------------------------------------------------
 
 
